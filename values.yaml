@@ -9,8 +9,8 @@ image:
 service:
   type: NodePort
   port: 3000
-  targetport: 14431
-  # nodePort: 14431
+  targetPort: 3000
+  nodePort: 14431
 
 
 container:
