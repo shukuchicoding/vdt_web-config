@@ -4,12 +4,24 @@ image:
   repository: vietanhhust1404/web
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: latest
 
 service:
   type: NodePort
   port: 3000
   targetport: 14431
+  # nodePort: 14431
+
 
 container:
-  name: ui
+  name: web
+ingress:
+  enabled: false
+serviceAccount:
+  create: true
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
