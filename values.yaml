@@ -12,6 +12,8 @@ service:
   targetport: 3000
   nodePort: 30414
 
+env:
+  API: http://192.168.49.2:30415
 
 container:
   name: web
