@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "web-config.fullname" . }}
+  labels:
+    {{- include "web-config.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetport }}
+      # targetPort: 3000
+      nodePort: {{ .Values.service.nodePort }}
+  selector:
+    {{- include "web-config.selectorLabels" . | nindent 4 }}
