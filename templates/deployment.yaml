@@ -4,16 +4,16 @@ metadata:
   name: {{ .Release.Name }}-web
   namespace: {{ .Release.Namespace }}
   labels: 
-    app: {{- include "web-config.labels" . | nindent 4 }}
+    {{- include "web-config.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{ .Release.Name }}-web
+      {{- include "web-config.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{ .Release.Name }}-web
+        {{- include "web-config.labels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Values.container.name | quote }}
