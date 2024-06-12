@@ -4,8 +4,6 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: {{ .Release.Name }}-web
   namespace: {{ .Release.Namespace }}
-  labels:
-    {{ .Release.Name }}-web
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
